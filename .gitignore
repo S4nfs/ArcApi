@@ -1,0 +1,9 @@
+Thumbs.db
+*~
+*.DS_Store
+.vscode
+.idea/*
+*.log
+.env
+node_modules
+
