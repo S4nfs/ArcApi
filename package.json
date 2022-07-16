@@ -1,15 +1,28 @@
 {
-  "name": "rbacapp",
-  "version": "1.0.0",
-  "description": "",
+  "name": "arclight",
+  "version": "1.0.1",
+  "description": "Build power and intelligence in to your application.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chatnaut/Arclight.git"
+  },
+  "keywords": [
+    "arclightapi",
+    "hypervisor",
+    "libvirt",
+    "cloud-computing"
+  ],
+  "author": "S4nfs",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chatnaut/Arclight/issues"
+  },
+  "homepage": "https://github.com/Chatnaut/Arclight#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-ensure-login": "^0.1.1",
@@ -27,5 +40,8 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
