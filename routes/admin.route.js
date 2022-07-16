@@ -2,7 +2,6 @@ const User = require('../models/user.model')
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const {roles} = require('../utils/constants')
-const { checkToken } = require('../auth/token_validation');
 // router.get('/users', async (req, res, next) => {
 //     try {
 //         const users = await User.find();
@@ -12,28 +11,8 @@ const { checkToken } = require('../auth/token_validation');
 //         next(error)
 //     }
 // })
-//user profiles
-router.get('/arcuser/:id', async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            // req.flash('error', 'Invalid Id');
-            // res.redirect('/admin/users');
-            res.status(400).json({
-                success: 0,
-                message: "Invalid User Id"
-            });
-        }
-        const person = await User.findById(id);
-        res.status(200).json({
-            success: 1,
-            message: "Profile retrieved successfully",
-            result: person
-        });
-    } catch (error) {
-        next(error)
-    }
-})
+
+
 // update roles
 router.post('/update-role', async(req, res, next) => {
     const { id, role } = req.body;
