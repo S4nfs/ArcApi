@@ -51,7 +51,7 @@ passport.use(
         try {
             console.log(jwt_payload);
             const user = await User.findById(jwt_payload.user
-                .id);
+                ._id);
             if (!user) {
                 return done(null, false);
             }
