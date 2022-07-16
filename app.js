@@ -53,10 +53,15 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/', require('./routes/index.route'));
-app.use('/auth', require('./routes/auth.route'));
-app.use('/user', require('./routes/user.route'));
+app.use('/v1/auth', require('./routes/auth.route'));
 
-app.use('/admin', passport.authenticate('jwt', {session: false}), require('./routes/admin.route'))
+app.use('/v1/user',  passport.authenticate('jwt', {session: false}), require('./routes/user.route'));
+app.use('/v1/admin', require('./routes/admin.route'));
+
+app.use("/v1/status", require('./routes/api_health'));
+app.use("/v1/terminal/", require('./routes/terminal'));
+
+
 
 //404 handler
 app.use((req, res, next) => {
