@@ -17,7 +17,8 @@ passport.use(
                 return done(null, false, { message: "Username/Email not registered" }) //error, usernameexists, message
             }
             //email exists let's verify the password and assign jwt token
-            const isMatch = await user.isvalidPassword(password);
+            const resultHashPassword = password.replace("$2y$", "$2b$"); //php hash generates $2y$ while node generates the $2b$
+            const isMatch = await user.isvalidPassword(resultHashPassword);
             if (isMatch) {
                 return done(null, user)
 
@@ -42,7 +43,7 @@ passport.deserializeUser(function (id, done) {
 })
 
 
-//JWT Strategy middleware and next() function
+//JWT Authentication middleware using passport and continue to next middleware
 passport.use(
     new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
