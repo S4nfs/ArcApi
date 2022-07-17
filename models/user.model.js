@@ -46,4 +46,3 @@ UserSchema.methods.isvalidPassword = async function (password) {
     }
 }
 module.exports = mongoose.model('arclight_user', UserSchema);
-// const resultHashPassword = password.replace("$2y$", "$2b$"); //php hash generates $2y$ while node generates the $2b$
