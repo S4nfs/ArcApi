@@ -1,5 +1,5 @@
 //arclight config route
-const ArclightConfig = require('../models/user.model');
+const {ArclightConfig} = require('../models/user.model');
 const router = require('express').Router();
 const mongoose = require('mongoose');
 
