@@ -46,6 +46,7 @@ UserSchema.methods.isvalidPassword = async function (password) {
     }
 }
 
+const User = mongoose.model('arclight_user', UserSchema);
 //arclight_config schema
 const ArclightConfigSchema = new mongoose.Schema({
     name: {
@@ -65,6 +66,13 @@ const ArclightConfigSchema = new mongoose.Schema({
     }
 })
 
+const ArclightConfig = mongoose.model('arclight_config', ArclightConfigSchema);
 
-module.exports = mongoose.model('arclight_user', UserSchema);
-module.exports = mongoose.model('arclight_config', ArclightConfigSchema);
+module.exports = {
+    User,
+    ArclightConfig
+}
+
+
+
+

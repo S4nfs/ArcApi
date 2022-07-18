@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/user.model');
+const {User} = require('../models/user.model');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
@@ -44,8 +44,10 @@ router.post('/login', function (req, res, next) {
                 user: user,
                 token: token
             });
-        });
-    })(req, res);
+        }
+        );
+    }
+    )(req, res, next);
 }
 );
 
