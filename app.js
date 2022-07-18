@@ -54,14 +54,15 @@ app.use((req, res, next) => {
 })
 
 //routes
-app.use('/', require('./routes/index.route'));
+app.use('/', require('./routes/config.route'));
 app.use('/v1/auth', require('./routes/auth.route'));
 
 app.use('/v1/user',  passport.authenticate('jwt', {session: false}), require('./routes/user.route'));
 app.use('/v1/admin', require('./routes/admin.route'));
 
 app.use("/v1/status", require('./routes/api_health'));
-app.use("/v1/terminal/", require('./routes/terminal'));
+app.use("/v1/terminal", require('./routes/terminal'));
+app.use("/v1/config", require('./routes/config.route'));
 
 
 
