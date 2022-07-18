@@ -45,4 +45,26 @@ UserSchema.methods.isvalidPassword = async function (password) {
         throw creteHttpError.InternalServerError(error.message);
     }
 }
+
+//arclight_config schema
+const ArclightConfigSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    value: {
+        type: String,
+    },
+    userid: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+
 module.exports = mongoose.model('arclight_user', UserSchema);
+module.exports = mongoose.model('arclight_config', ArclightConfigSchema);
