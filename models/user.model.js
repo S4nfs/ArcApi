@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
         enum: [roles.admin, roles.moderator, roles.client],
         default: roles.client
     }
-})
+}  , { timestamps: true });
 // pre saving user
 UserSchema.pre('save', async function (next) { //cant use arrow function here (becoz of ||this||)
     try {
@@ -34,7 +34,6 @@ UserSchema.pre('save', async function (next) { //cant use arrow function here (b
         next(err)
     }
 });
-
 //Method for faster compare password used in passport.auth
 UserSchema.methods.isvalidPassword = async function (password) {
     try {
@@ -45,9 +44,9 @@ UserSchema.methods.isvalidPassword = async function (password) {
         throw creteHttpError.InternalServerError(error.message);
     }
 }
-
 const User = mongoose.model('arclight_user', UserSchema);
-//arclight_config schema
+
+//arclight_config schema------------------------------------------------------
 const ArclightConfigSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -59,18 +58,32 @@ const ArclightConfigSchema = new mongoose.Schema({
     userid: {
         type: String,
         required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
-})
-
+}  , { timestamps: true });
 const ArclightConfig = mongoose.model('arclight_config', ArclightConfigSchema);
+
+//arclight_log schema------------------------------------------------------
+const ArclightLogSchema = new mongoose.Schema({
+    userid: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+    },
+    host_uuid:{
+        type: String,
+    },
+    domain_uuid: {
+        type: String,
+    }
+}   , { timestamps: true });
+const ArclightLog = mongoose.model('arclight_event', ArclightLogSchema);
 
 module.exports = {
     User,
-    ArclightConfig
+    ArclightConfig,
+    ArclightLog
 }
 
 

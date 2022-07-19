@@ -63,7 +63,7 @@ app.use('/v1/admin', require('./routes/admin.route'));
 app.use("/v1/status", require('./routes/api_health'));
 app.use("/v1/terminal", require('./routes/terminal'));
 app.use("/v1/config", require('./routes/config.route'));
-
+app.use('/v1/event', require('./routes/event.route'));
 
 
 //404 handler

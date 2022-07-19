@@ -75,10 +75,4 @@ router.get('/arc_config/:userid', async (req, res, next) => {
 }
 );
 
-
-
-
-
-
-
 module.exports = router;
