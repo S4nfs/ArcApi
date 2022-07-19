@@ -30,6 +30,15 @@ router.post('/arc_config', async (req, res, next) => {
                 result: data
             });
         }
+        //if name is theme_color find and update value where userid = req.user.id
+        if (name === 'theme_color') {
+            const data = await ArclightConfig.findOneAndUpdate({ name: name, userid: userid }, { $set: { value: value } }, { new: true, upsert: true });
+            res.status(200).json({
+                success: 1,
+                message: "Theme color updated successfully",
+                result: data
+            });
+        }
     } catch (error) {
         res.status(500).json({
             success: 0,
