@@ -6,8 +6,7 @@ const InstanceSchema = new mongoose.Schema({
         required: true
     },
     uuid: {
-        type: String,
-        unique: true
+        type: String
     },
     action: {
         type: String,
